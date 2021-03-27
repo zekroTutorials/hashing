@@ -20,6 +20,21 @@ type Hasher interface {
 - [SHA256 Peppered](pkg/impl/sha256_peppered.go)
 - [Argon2id](pkg/impl/argon2id.go)
 
+## Try It Yourself
+
+You can clone this repo and run it when you have the go compiler toolchain installed.
+```bash
+$ git clone https://github.com/zekroTutorials/hashing .
+$ go run main.go
+```
+
+Otherwise, you can use the provided Dockerfile to build an image and run it.
+```bash
+$ git clone https://github.com/zekroTutorials/hashing .
+$ docker build . -t hashing
+$ docker run --name tmp hashing && docker rm tmp
+```
+
 ## Resources
 
 This repository was created as demonstration for my [*(german)* introduction video](https://youtu.be/OcKlnvKXbpg) about password hashing.

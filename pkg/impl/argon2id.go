@@ -6,7 +6,7 @@ import (
 	"github.com/alexedwards/argon2id"
 )
 
-type Sha256Argon2ID struct{}
+type Argon2id struct{}
 
 var argon2IDParams = &argon2id.Params{
 	Memory:      128 * 1024,
@@ -16,7 +16,11 @@ var argon2IDParams = &argon2id.Params{
 	KeyLength:   32,
 }
 
-func (s Sha256Argon2ID) Generate(password string) string {
+func (s Argon2id) GetName() string {
+	return "Argon2id"
+}
+
+func (s Argon2id) Generate(password string) string {
 	hash, err := argon2id.CreateHash(password, argon2IDParams)
 	if err != nil {
 		panic(err)
@@ -25,7 +29,7 @@ func (s Sha256Argon2ID) Generate(password string) string {
 	return hash
 }
 
-func (s Sha256Argon2ID) Validate(password, hash string) bool {
+func (s Argon2id) Validate(password, hash string) bool {
 	match, _, err := argon2id.CheckHash(password, hash)
 	if err != nil {
 		panic(err)

@@ -78,6 +78,12 @@ func computeHashes(hasher pkg.Hasher) {
 		}
 	})
 
+	fmt.Printf(
+		"----------------------------------------\n"+
+			"  %s\n"+
+			"----------------------------------------\n",
+		hasher.GetName())
+
 	format := fmt.Sprintf("%%-%ds - %%%ds\n", maxLenPw, maxLenHash)
 	for _, p := range pairs {
 		fmt.Printf(format, p.Password, p.Hash)
@@ -85,7 +91,7 @@ func computeHashes(hasher pkg.Hasher) {
 
 	fmt.Printf(
 		"\nTime for Hashing:    %s\n"+
-			"Time for Validation: %s\n",
+			"Time for Validation: %s\n\n",
 		tookForHasing.String(),
 		tookForValidation.String())
 }
@@ -95,7 +101,7 @@ func main() {
 		impl.Sha256Raw{},
 		impl.Sha256Salted{},
 		impl.Sha256Peppered{},
-		impl.Sha256Argon2ID{},
+		impl.Argon2id{},
 	}
 
 	for _, hasher := range hashers {

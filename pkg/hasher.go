@@ -5,6 +5,8 @@ package pkg
 // validate a given string by comparing it to
 // the passed hash.
 type Hasher interface {
+	GetName() string
+
 	Generate(password string) string
 	Validate(password, hash string) bool
 }

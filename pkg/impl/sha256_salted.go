@@ -10,6 +10,10 @@ import (
 
 type Sha256Salted struct{}
 
+func (s Sha256Salted) GetName() string {
+	return "SHA256 Salted"
+}
+
 func (s Sha256Salted) Generate(password string) string {
 	salt := make([]byte, 8)
 	if _, err := rand.Read(salt); err != nil {

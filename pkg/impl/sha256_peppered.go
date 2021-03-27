@@ -20,6 +20,10 @@ var pepperStore = func(n int) (p [][]byte) {
 
 type Sha256Peppered struct{}
 
+func (s Sha256Peppered) GetName() string {
+	return "SHA256 Peppered"
+}
+
 func (s Sha256Peppered) Generate(password string) string {
 	i, err := rand.Int(rand.Reader, big.NewInt(int64(len(pepperStore))))
 	if err != nil {

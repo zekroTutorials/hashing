@@ -7,6 +7,10 @@ import (
 
 type Sha256Raw struct{}
 
+func (s Sha256Raw) GetName() string {
+	return "SHA256 Raw"
+}
+
 func (s Sha256Raw) Generate(password string) string {
 	return fmt.Sprintf("%x", sha256.Sum256([]byte(password)))
 }
